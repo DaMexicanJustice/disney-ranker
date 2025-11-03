@@ -42,7 +42,7 @@ function App() {
 
     const fetchPoster = async (movieTitle, movieYear = null) => {
         try {
-            let url = `http://www.omdbapi.com/?t=${encodeURIComponent(movieTitle)}&apikey=${OMDB_API_KEY}`;
+            let url = `https://www.omdbapi.com/?t=${encodeURIComponent(movieTitle)}&apikey=${OMDB_API_KEY}`;
             if (movieYear) {
                 url += `&y=${movieYear}`;
             }
@@ -404,49 +404,65 @@ function App() {
                                 <div style={{
                                     flex: '1',
                                     display: 'flex',
+                                    flexDirection: 'column',
                                     justifyContent: 'space-between',
-                                    alignItems: 'center',
                                     minWidth: '0'
                                 }}>
-                                    <span style={{
+                                    <div style={{
                                         fontSize: '18px',
                                         wordBreak: 'break-word',
-                                        marginRight: '15px',
+                                        marginBottom: '8px',
                                         fontFamily: '"Comic Sans MS", "Chalkduster", fantasy, cursive',
                                         color: '#2c3e50',
-                                        textShadow: '0 1px 2px rgba(0,0,0,0.1)'
+                                        textShadow: '0 1px 2px rgba(0,0,0,0.1)',
+                                        lineHeight: '1.3'
                                     }}>
-                                        {movie.rank}. {movie.title}{movie.year ? ` (${movie.year})` : ''} — {movie.score}/10 ⭐
-                                    </span>
-                                    <button
-                                        onClick={() => deleteMovie(index)}
-                                        style={{
-                                            background: 'linear-gradient(135deg, #ffd700 0%, #ffed4e 100%)',
-                                            color: '#2c3e50',
-                                            border: '3px solid rgba(255, 215, 0, 0.8)',
-                                            borderRadius: '20px',
-                                            padding: '12px 18px',
+                                        {movie.rank}. {movie.title}{movie.year ? ` (${movie.year})` : ''}
+                                    </div>
+                                    <div style={{
+                                        display: 'flex',
+                                        justifyContent: 'space-between',
+                                        alignItems: 'center'
+                                    }}>
+                                        <span style={{
                                             fontSize: '16px',
-                                            cursor: 'pointer',
-                                            fontWeight: 'bold',
-                                            minWidth: '90px',
-                                            flexShrink: 0,
                                             fontFamily: '"Comic Sans MS", "Chalkduster", fantasy, cursive',
-                                            boxShadow: '0 4px 15px rgba(255, 215, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.2)',
-                                            transition: 'all 0.3s ease',
-                                            textShadow: '0 1px 2px rgba(0,0,0,0.1)'
-                                        }}
-                                        onMouseEnter={(e) => {
-                                            e.target.style.boxShadow = '0 6px 20px rgba(255, 215, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.2), 0 0 20px rgba(255, 215, 0, 0.4)';
-                                            e.target.style.transform = 'translateY(-2px)';
-                                        }}
-                                        onMouseLeave={(e) => {
-                                            e.target.style.boxShadow = '0 4px 15px rgba(255, 215, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.2)';
-                                            e.target.style.transform = 'translateY(0)';
-                                        }}
-                                    >
-                                        🗑️ Delete
-                                    </button>
+                                            color: '#2c3e50',
+                                            textShadow: '0 1px 2px rgba(0,0,0,0.1)',
+                                            fontWeight: 'bold'
+                                        }}>
+                                            {movie.score}/10 ⭐
+                                        </span>
+                                        <button
+                                            onClick={() => deleteMovie(index)}
+                                            style={{
+                                                background: 'linear-gradient(135deg, #ffd700 0%, #ffed4e 100%)',
+                                                color: '#2c3e50',
+                                                border: '3px solid rgba(255, 215, 0, 0.8)',
+                                                borderRadius: '20px',
+                                                padding: '12px 18px',
+                                                fontSize: '16px',
+                                                cursor: 'pointer',
+                                                fontWeight: 'bold',
+                                                minWidth: '90px',
+                                                flexShrink: 0,
+                                                fontFamily: '"Comic Sans MS", "Chalkduster", fantasy, cursive',
+                                                boxShadow: '0 4px 15px rgba(255, 215, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.2)',
+                                                transition: 'all 0.3s ease',
+                                                textShadow: '0 1px 2px rgba(0,0,0,0.1)'
+                                            }}
+                                            onMouseEnter={(e) => {
+                                                e.target.style.boxShadow = '0 6px 20px rgba(255, 215, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.2), 0 0 20px rgba(255, 215, 0, 0.4)';
+                                                e.target.style.transform = 'translateY(-2px)';
+                                            }}
+                                            onMouseLeave={(e) => {
+                                                e.target.style.boxShadow = '0 4px 15px rgba(255, 215, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.2)';
+                                                e.target.style.transform = 'translateY(0)';
+                                            }}
+                                        >
+                                            🗑️ Delete
+                                        </button>
+                                    </div>
                                 </div>
                             </li>
                         ))}
