@@ -110,28 +110,79 @@ function App() {
 
     return (
         <div style={{
-            fontFamily: 'Arial, sans-serif',
+            fontFamily: '"Comic Sans MS", "Chalkduster", fantasy, cursive',
             maxWidth: '100%',
             width: '100vw',
             margin: '0',
-            padding: '10px',
-            backgroundColor: '#f0f0f0',
+            padding: '20px',
+            background: 'linear-gradient(135deg, #e6f3ff 0%, #fce4ec 100%)',
             minHeight: '100vh',
-            boxSizing: 'border-box'
+            boxSizing: 'border-box',
+            position: 'relative',
+            overflow: 'hidden'
         }}>
+            {/* Fairy dust background animation */}
+            <div style={{
+                position: 'absolute',
+                top: '0',
+                left: '0',
+                width: '100%',
+                height: '100%',
+                pointerEvents: 'none',
+                zIndex: '0'
+            }}>
+                {[...Array(20)].map((_, i) => (
+                    <div
+                        key={i}
+                        style={{
+                            position: 'absolute',
+                            left: `${Math.random() * 100}%`,
+                            top: `${Math.random() * 100}%`,
+                            width: '4px',
+                            height: '4px',
+                            backgroundColor: 'rgba(255, 215, 0, 0.6)',
+                            borderRadius: '50%',
+                            animation: `twinkle ${2 + Math.random() * 3}s infinite ${Math.random() * 2}s`,
+                            boxShadow: '0 0 6px rgba(255, 215, 0, 0.8)'
+                        }}
+                    />
+                ))}
+            </div>
+
+            <style>
+                {`
+              @keyframes twinkle {
+                0%, 100% { opacity: 0.3; transform: scale(1); }
+                50% { opacity: 1; transform: scale(1.2); }
+              }
+            `}
+            </style>
+            {/* Disney Castle Logo */}
+            <div style={{
+                textAlign: 'center',
+                marginBottom: '20px',
+                fontSize: '48px'
+            }}>
+                🏰
+            </div>
+
             <h1 style={{
                 textAlign: 'center',
-                color: '#333',
-                fontSize: '24px',
-                marginBottom: '20px'
-            }}>🎬 Disney Movie Ranker</h1>
+                color: '#2c3e50',
+                fontSize: '28px',
+                marginBottom: '30px',
+                fontWeight: 'bold',
+                textShadow: '0 0 10px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.3)',
+                fontFamily: '"Comic Sans MS", "Chalkduster", fantasy, cursive'
+            }}>Disney Movie Ranker</h1>
 
             <div style={{
-                marginBottom: '20px',
-                backgroundColor: 'white',
-                padding: '15px',
-                borderRadius: '8px',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+                marginBottom: '30px',
+                background: 'linear-gradient(135deg, #f8e8ff 0%, #fce4ec 100%)',
+                padding: '20px',
+                borderRadius: '24px',
+                boxShadow: '0 8px 32px rgba(0,0,0,0.1), 0 0 0 1px rgba(255,255,255,0.2)',
+                backdropFilter: 'blur(10px)'
             }}>
                 <input
                     type="text"
@@ -140,13 +191,21 @@ function App() {
                     onChange={(e) => setTitle(e.target.value)}
                     style={{
                         width: '100%',
-                        padding: '12px',
-                        marginBottom: '10px',
-                        border: '1px solid #ccc',
-                        borderRadius: '6px',
+                        padding: '15px',
+                        marginBottom: '12px',
+                        border: '2px solid rgba(255,255,255,0.3)',
+                        borderRadius: '16px',
                         fontSize: '16px',
-                        boxSizing: 'border-box'
+                        boxSizing: 'border-box',
+                        backgroundColor: 'rgba(255,255,255,0.8)',
+                        fontStyle: 'italic',
+                        fontFamily: '"Comic Sans MS", "Chalkduster", fantasy, cursive',
+                        boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.1)',
+                        outline: 'none',
+                        transition: 'all 0.3s ease'
                     }}
+                    onFocus={(e) => e.target.style.boxShadow = 'inset 0 2px 4px rgba(0,0,0,0.1), 0 0 0 3px rgba(255, 248, 88, 0.5)'}
+                    onBlur={(e) => e.target.style.boxShadow = 'inset 0 2px 4px rgba(0,0,0,0.1)'}
                 />
                 <input
                     type="number"
@@ -157,13 +216,21 @@ function App() {
                     max="2030"
                     style={{
                         width: '100%',
-                        padding: '12px',
-                        marginBottom: '10px',
-                        border: '1px solid #ccc',
-                        borderRadius: '6px',
+                        padding: '15px',
+                        marginBottom: '12px',
+                        border: '2px solid rgba(255,255,255,0.3)',
+                        borderRadius: '16px',
                         fontSize: '16px',
-                        boxSizing: 'border-box'
+                        boxSizing: 'border-box',
+                        backgroundColor: 'rgba(255,255,255,0.8)',
+                        fontStyle: 'italic',
+                        fontFamily: '"Comic Sans MS", "Chalkduster", fantasy, cursive',
+                        boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.1)',
+                        outline: 'none',
+                        transition: 'all 0.3s ease'
                     }}
+                    onFocus={(e) => e.target.style.boxShadow = 'inset 0 2px 4px rgba(0,0,0,0.1), 0 0 0 3px rgba(255, 248, 88, 0.5)'}
+                    onBlur={(e) => e.target.style.boxShadow = 'inset 0 2px 4px rgba(0,0,0,0.1)'}
                 />
                 <input
                     type="number"
@@ -173,13 +240,21 @@ function App() {
                     min="1"
                     style={{
                         width: '100%',
-                        padding: '12px',
-                        marginBottom: '10px',
-                        border: '1px solid #ccc',
-                        borderRadius: '6px',
+                        padding: '15px',
+                        marginBottom: '12px',
+                        border: '2px solid rgba(255,255,255,0.3)',
+                        borderRadius: '16px',
                         fontSize: '16px',
-                        boxSizing: 'border-box'
+                        boxSizing: 'border-box',
+                        backgroundColor: 'rgba(255,255,255,0.8)',
+                        fontStyle: 'italic',
+                        fontFamily: '"Comic Sans MS", "Chalkduster", fantasy, cursive',
+                        boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.1)',
+                        outline: 'none',
+                        transition: 'all 0.3s ease'
                     }}
+                    onFocus={(e) => e.target.style.boxShadow = 'inset 0 2px 4px rgba(0,0,0,0.1), 0 0 0 3px rgba(255, 248, 88, 0.5)'}
+                    onBlur={(e) => e.target.style.boxShadow = 'inset 0 2px 4px rgba(0,0,0,0.1)'}
                 />
                 <input
                     type="number"
@@ -190,45 +265,74 @@ function App() {
                     max="10"
                     style={{
                         width: '100%',
-                        padding: '12px',
-                        marginBottom: '15px',
-                        border: '1px solid #ccc',
-                        borderRadius: '6px',
+                        padding: '15px',
+                        marginBottom: '20px',
+                        border: '2px solid rgba(255,255,255,0.3)',
+                        borderRadius: '16px',
                         fontSize: '16px',
-                        boxSizing: 'border-box'
+                        boxSizing: 'border-box',
+                        backgroundColor: 'rgba(255,255,255,0.8)',
+                        fontStyle: 'italic',
+                        fontFamily: '"Comic Sans MS", "Chalkduster", fantasy, cursive',
+                        boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.1)',
+                        outline: 'none',
+                        transition: 'all 0.3s ease'
                     }}
+                    onFocus={(e) => e.target.style.boxShadow = 'inset 0 2px 4px rgba(0,0,0,0.1), 0 0 0 3px rgba(255, 248, 88, 0.5)'}
+                    onBlur={(e) => e.target.style.boxShadow = 'inset 0 2px 4px rgba(0,0,0,0.1)'}
                 />
                 <button
                     onClick={addMovie}
                     disabled={loading}
                     style={{
                         width: '100%',
-                        padding: '14px',
-                        backgroundColor: loading ? '#ccc' : '#4CAF50',
-                        color: 'white',
-                        border: 'none',
-                        borderRadius: '6px',
-                        fontSize: '16px',
+                        padding: '16px',
+                        background: loading ? '#ccc' : 'linear-gradient(135deg, #ffd700 0%, #ffed4e 100%)',
+                        color: '#2c3e50',
+                        border: '3px solid rgba(255, 215, 0, 0.8)',
+                        borderRadius: '24px',
+                        fontSize: '18px',
                         cursor: loading ? 'not-allowed' : 'pointer',
-                        fontWeight: 'bold'
+                        fontWeight: 'bold',
+                        fontFamily: '"Comic Sans MS", "Chalkduster", fantasy, cursive',
+                        boxShadow: '0 4px 15px rgba(255, 215, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.2)',
+                        transition: 'all 0.3s ease',
+                        textShadow: '0 1px 2px rgba(0,0,0,0.1)'
+                    }}
+                    onMouseEnter={(e) => {
+                        if (!loading) {
+                            e.target.style.boxShadow = '0 6px 20px rgba(255, 215, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.2), 0 0 20px rgba(255, 215, 0, 0.4)';
+                            e.target.style.transform = 'translateY(-2px)';
+                        }
+                    }}
+                    onMouseLeave={(e) => {
+                        if (!loading) {
+                            e.target.style.boxShadow = '0 4px 15px rgba(255, 215, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.2)';
+                            e.target.style.transform = 'translateY(0)';
+                        }
                     }}
                 >
-                    {loading ? 'Fetching Poster...' : '+ Add Movie'}
+                    {loading ? '✨ Fetching Poster...' : '✨ + Add Movie'}
                 </button>
             </div>
 
             <div>
                 <h2 style={{
-                    color: '#333',
-                    fontSize: '20px',
-                    marginBottom: '15px'
-                }}>Your Ranked Movies</h2>
+                    color: '#2c3e50',
+                    fontSize: '24px',
+                    marginBottom: '20px',
+                    textAlign: 'center',
+                    fontFamily: '"Comic Sans MS", "Chalkduster", fantasy, cursive',
+                    textShadow: '0 0 8px rgba(255, 215, 0, 0.3)'
+                }}>✨ Your Ranked Movies ✨</h2>
                 {movies.length === 0 ? (
                     <p style={{
                         textAlign: 'center',
                         color: '#666',
-                        fontSize: '16px'
-                    }}>No movies added yet.</p>
+                        fontSize: '18px',
+                        fontStyle: 'italic',
+                        fontFamily: '"Comic Sans MS", "Chalkduster", fantasy, cursive'
+                    }}>No magical movies added yet... 🏰</p>
                 ) : (
                     <ul style={{
                         listStyle: 'none',
@@ -239,28 +343,41 @@ function App() {
                             <li
                                 key={index}
                                 style={{
-                                    backgroundColor: 'white',
-                                    marginBottom: '10px',
-                                    padding: '15px',
-                                    borderRadius: '6px',
-                                    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                                    background: 'linear-gradient(135deg, #e8d5ff 0%, #fce4ec 100%)',
+                                    marginBottom: '15px',
+                                    padding: '20px',
+                                    borderRadius: '24px',
+                                    boxShadow: '0 8px 32px rgba(0,0,0,0.1), 0 0 0 1px rgba(255,255,255,0.2)',
                                     display: 'flex',
                                     alignItems: 'center',
-                                    flexWrap: 'wrap'
+                                    flexWrap: 'wrap',
+                                    backdropFilter: 'blur(10px)',
+                                    transition: 'all 0.3s ease',
+                                    position: 'relative',
+                                    overflow: 'hidden'
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.target.style.transform = 'translateY(-3px)';
+                                    e.target.style.boxShadow = '0 12px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.2), 0 0 20px rgba(255, 215, 0, 0.3)';
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.target.style.transform = 'translateY(0)';
+                                    e.target.style.boxShadow = '0 8px 32px rgba(0,0,0,0.1), 0 0 0 1px rgba(255,255,255,0.2)';
                                 }}
                             >
                                 <div
                                     style={{
-                                        width: '60px',
-                                        height: '90px',
-                                        borderRadius: '4px',
-                                        marginRight: '15px',
+                                        width: '70px',
+                                        height: '100px',
+                                        borderRadius: '12px',
+                                        marginRight: '20px',
                                         flexShrink: 0,
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'center',
-                                        backgroundColor: movie.poster ? 'transparent' : '#f0f0f0',
-                                        border: movie.poster ? 'none' : '2px dashed #ccc'
+                                        backgroundColor: movie.poster ? 'transparent' : 'rgba(255,255,255,0.8)',
+                                        border: movie.poster ? 'none' : '3px dashed rgba(255,255,255,0.5)',
+                                        boxShadow: movie.poster ? 'none' : 'inset 0 2px 4px rgba(0,0,0,0.1)'
                                     }}
                                 >
                                     {movie.poster ? (
@@ -271,12 +388,13 @@ function App() {
                                                 width: '100%',
                                                 height: '100%',
                                                 objectFit: 'cover',
-                                                borderRadius: '4px'
+                                                borderRadius: '12px',
+                                                boxShadow: '0 4px 8px rgba(0,0,0,0.2)'
                                             }}
                                         />
                                     ) : (
                                         <span style={{
-                                            fontSize: '24px',
+                                            fontSize: '28px',
                                             color: '#999'
                                         }}>
                                             🖼️
@@ -291,28 +409,43 @@ function App() {
                                     minWidth: '0'
                                 }}>
                                     <span style={{
-                                        fontSize: '16px',
+                                        fontSize: '18px',
                                         wordBreak: 'break-word',
-                                        marginRight: '10px'
+                                        marginRight: '15px',
+                                        fontFamily: '"Comic Sans MS", "Chalkduster", fantasy, cursive',
+                                        color: '#2c3e50',
+                                        textShadow: '0 1px 2px rgba(0,0,0,0.1)'
                                     }}>
-                                        {movie.rank}. {movie.title}{movie.year ? ` (${movie.year})` : ''} — {movie.score}/10
+                                        {movie.rank}. {movie.title}{movie.year ? ` (${movie.year})` : ''} — {movie.score}/10 ⭐
                                     </span>
                                     <button
                                         onClick={() => deleteMovie(index)}
                                         style={{
-                                            backgroundColor: '#f44336',
-                                            color: 'white',
-                                            border: 'none',
-                                            borderRadius: '6px',
-                                            padding: '10px 15px',
-                                            fontSize: '14px',
+                                            background: 'linear-gradient(135deg, #ffd700 0%, #ffed4e 100%)',
+                                            color: '#2c3e50',
+                                            border: '3px solid rgba(255, 215, 0, 0.8)',
+                                            borderRadius: '20px',
+                                            padding: '12px 18px',
+                                            fontSize: '16px',
                                             cursor: 'pointer',
                                             fontWeight: 'bold',
-                                            minWidth: '80px',
-                                            flexShrink: 0
+                                            minWidth: '90px',
+                                            flexShrink: 0,
+                                            fontFamily: '"Comic Sans MS", "Chalkduster", fantasy, cursive',
+                                            boxShadow: '0 4px 15px rgba(255, 215, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.2)',
+                                            transition: 'all 0.3s ease',
+                                            textShadow: '0 1px 2px rgba(0,0,0,0.1)'
+                                        }}
+                                        onMouseEnter={(e) => {
+                                            e.target.style.boxShadow = '0 6px 20px rgba(255, 215, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.2), 0 0 20px rgba(255, 215, 0, 0.4)';
+                                            e.target.style.transform = 'translateY(-2px)';
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            e.target.style.boxShadow = '0 4px 15px rgba(255, 215, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.2)';
+                                            e.target.style.transform = 'translateY(0)';
                                         }}
                                     >
-                                        ❌ Delete
+                                        🗑️ Delete
                                     </button>
                                 </div>
                             </li>
